@@ -54,18 +54,18 @@ def crop_date(dim1,dim2,dim3,dim4,name):
 
 
 
+crop(230,70,820,140,'job')
 
-crop(700,70,800,140,'job')
-
-crop(200,120,800,190,'job2')
+crop(230,120,820,190,'job2')
 
 crop(700,180,820,260,'gender')
 
-crop(480,160,760,260,'religion')
+crop(480,180,760,260,'religion')
 
-crop(200,160,570,260,'a3zb')
+crop(200,180,570,260,'a3zb')
 
-crop_date(200,0,570,60,'date')
+#crop_date(200,0,570,60,'date')
+
 
 
 filew.close()
