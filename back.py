@@ -3,21 +3,27 @@ import cv2
 import pytesseract as image_to_string
 import numpy as np
 
-img=Image.open("bta2a1.jpeg") #1005 630
+img=Image.open("baba2.jpg") #1005 630
 filew = open('output.txt','w+')
 #text=image_to_string.image_to_string(img,lang='ara')
 #filew.write(text)
 
 
-im_gray = cv2.imread('bta2a1.jpeg', cv2.IMREAD_GRAYSCALE)
-(thresh, im_bw) = cv2.threshold(im_gray, 128, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)
-thresh = 90
-img_binary = cv2.threshold(im_gray, thresh, 255, cv2.THRESH_BINARY)[1]
+im_gray = cv2.imread('baba2.jpg', cv2.IMREAD_GRAYSCALE)
+ret,thresh_img = cv2.threshold(im_gray,140,255,cv2.THRESH_BINARY)
 kernel = np.ones((2,2),np.uint8)
-img_binary = cv2.erode(img_binary,kernel,iterations = 1)
+img_binary = cv2.erode(thresh_img,kernel,iterations = 1)
 img_binary = cv2.medianBlur(img_binary, 1)
-cv2.imwrite('bta2a3.png',img_binary)
-img_binary=Image.open("bta2a3.png")
+cv2.imwrite('threshold.jpg',thresh_img)
+
+
+img_binary=Image.open('threshold.jpg')
+text=image_to_string.image_to_string(img,lang='ara')
+#print(text)
+#filew.write(text+'\n')
+if 'مسلم' in text:
+	print("YESSSSSSSSSSSSSSSSSSSSS")
+
 '''
 kollo=cv2.imread("im.png")
 kollo = cv2.erode(kollo,kernel,iterations = 1)
