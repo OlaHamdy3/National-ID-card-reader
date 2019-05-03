@@ -7,6 +7,7 @@ import numpy as np
 
 source_image='baba2.jpg'
 img=Image.open(source_image) #1005 630
+#print(img_binary.size)
 #text_all=image_to_string.image_to_string(img,lang='ara')
 filew = open('output.txt','w+')
 
@@ -15,15 +16,18 @@ filew = open('output.txt','w+')
 
 
 im_gray = cv2.imread(source_image, cv2.IMREAD_GRAYSCALE)
-ret,thresh_img = cv2.threshold(im_gray,140,255,cv2.THRESH_BINARY)
+ret,thresh_img = cv2.threshold(im_gray,130,255,cv2.THRESH_BINARY)
 kernel = np.ones((2,2),np.uint8)
-img_binary = cv2.erode(thresh_img,kernel,iterations = 1)
-img_binary = cv2.medianBlur(img_binary, 1)
+#img_binary = cv2.erode(thresh_img,kernel,iterations = 1)
+#img_binary = cv2.medianBlur(img_binary, 1)
 cv2.imwrite('threshold.jpg',thresh_img)
 
 img_binary=Image.open('threshold.jpg')
-text_all=image_to_string.image_to_string(img_binary,lang='ara')
 
+text_all=image_to_string.image_to_string(img_binary,lang='ara')
+#filew.write(text_all+'\n')
+#print(text_all)
+#print('________________________________')
 
 def crop(dim1,dim2,dim3,dim4,name):
 	area=(dim1,dim2,dim3,dim4)
@@ -45,9 +49,26 @@ def crop(dim1,dim2,dim3,dim4,name):
 			text='ذكر'
 		elif 'أنثى' in text_all:
 			text='أنثى'
+		elif 'انتى' in text_all:
+			text='أنتى'
+
+	if name=='a3zb':
+		if 'أنسة' in text_all:
+			text='أنسة'
+		elif 'متزوجة' in text_all:
+			text='متزوجة'
+		elif 'متزوج' in text_all:
+			text='متزوج'
+		elif 'أعزب' in text_all:
+			text='أعزب'
+
 
 	print(text)
 	filew.write(text+'\n')
+	#if name=='a3zb':
+	#	cropped_img.show()
+
+
 
 
 def crop_date(dim1,dim2,dim3,dim4,name):
@@ -73,6 +94,8 @@ crop(700,180,820,260,'gender')
 crop(480,180,760,260,'religion')
 
 crop(200,180,570,260,'a3zb')
+
+crop(200,225,820,290,'husband')
 
 #crop_date(200,0,570,60,'date')
 
