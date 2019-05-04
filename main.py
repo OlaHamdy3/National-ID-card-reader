@@ -6,6 +6,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 import form
+import Scanner
 #from PyQt5.QtWidgets import QApplication, QMainWindow, QMenu, QVBoxLayout, QSizePolicy, QMessageBox, QWidget, \
    # QPushButton, QCheckBox, QLabel, QLineEdit, QComboBox
 #from PyQt5.QtGui import QIcon
@@ -35,9 +36,11 @@ class MainApp(QMainWindow, FORM_CLASS):
     def front(self):
         global front_addr
         front_addr,_ = QFileDialog.getOpenFileName(self,'Open File','',"Image files(*.jpg *.png *.jpeg)")
+        Scanner.scan(front_addr,"front")
         #front_addr = str(front_addr)[2:str(front_addr).find(',')-1]
-        pixmap = QPixmap(front_addr)
-
+        pixmap = QPixmap("temp_front.jpg")
+        
+        print(type(pixmap))
         self.label_imgf.setPixmap(pixmap)
         self.label_imgf.setScaledContents(True)
         
@@ -47,8 +50,9 @@ class MainApp(QMainWindow, FORM_CLASS):
     def back(self):
         global back_addr
         back_addr,_ = QFileDialog.getOpenFileName(self,'Open File','',"Image files(*.jpg *.png *.jpeg)")
+        Scanner.scan(back_addr,"back")
         #back_addr = str(back_addr)[2:str(back_addr).find(',')-1]
-        pixmap = QPixmap(back_addr)
+        pixmap = QPixmap("temp_back.jpg")
 
         self.label_imgb.setPixmap(pixmap)
         self.label_imgb.setScaledContents(True)
@@ -80,4 +84,4 @@ def main():
 if __name__ == '__main__':
     main()
 
-o
+

@@ -6,7 +6,7 @@ import argparse
 import cv2
 import imutils
 
-def scan(path):
+def scan(path,side):
         # load the image and compute the ratio of the old height
         # to the new height, clone it, and resize it
         image = cv2.imread(path)
@@ -46,6 +46,9 @@ def scan(path):
         warped = four_point_transform(orig, screenCnt.reshape(4, 2) * ratio)
 
         # show the original and scanned images
-        cv2.imshow("Scanned", imutils.resize(warped, height = 650))
         newimg = cv2.resize(warped,(1000,630))
+        if(side=="front"):
+            cv2.imwrite("temp_front.jpg",newimg)
+        elif(side=="back"):
+            cv2.imwrite("temp_back.jpg",newimg)
         return newimg
