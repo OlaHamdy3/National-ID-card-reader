@@ -84,7 +84,7 @@ def back_read(source_image):
 	cv2.imwrite('threshold.jpg',thresh_img)
 	img_binary=Image.open('threshold.jpg')
 	text_all=image_to_string(img_binary,lang='ara')
-	print(text_all)
+	
 	global job,job2,gender,religion,a3zb,husband
 
 	job = crop(230,70,820,140,'job',img_binary,text_all)
