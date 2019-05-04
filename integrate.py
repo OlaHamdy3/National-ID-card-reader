@@ -5,7 +5,7 @@ from pytesseract import image_to_string
 import numpy as np
 pic =np.zeros((300,225))
 name,add,IDNumber,BDate = '','','',''
-job,job2,gender,religion,a3zb,husband = '','','','','',''
+job,job2,gender,religion,a3zb,husband = '','','','','','',''
 #Reading the front side of the ID card
 def front_read(front_src):
 	
