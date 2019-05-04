@@ -102,7 +102,3 @@ def back_read(source_image):
 
 
 
-back_read('back1.jpg')
-front_read('front10.jpg')
-print(name,add,IDNumber,BDate,job,job2,gender,religion,a3zb,husband)
-
