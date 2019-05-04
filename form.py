@@ -32,7 +32,7 @@ def form(front_path,back_path):
     id=integrate.IDNumber
     address=remove_newline(integrate.add)
     birthdata=integrate.BDate
-    place_of_birth="empty"
+    place_of_birth=integrate.govern
     gender=integrate.gender
     religion=integrate.religion
     social_status=integrate.a3zb

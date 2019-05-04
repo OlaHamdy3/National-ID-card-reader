@@ -1,5 +1,6 @@
 from PIL import Image
 import cv2
+import pob
 from pytesseract import image_to_string
 import numpy as np
 pic =np.zeros((300,225))
@@ -17,6 +18,7 @@ def front_read(front_src):
 	global add
 	global IDNumber
 	global BDate
+	global govern
 	# split the img
 	pic = im_gray[50:350,50:275]
 	Name = im_bw[150:310, 400:1000]
@@ -36,7 +38,8 @@ def front_read(front_src):
 	month = IDNumber[3:5]
 	day = IDNumber[5:7]
 	BDate = year + '/' + month + '/'+ day
-
+	#Getting the governorate.
+	govern = pob.placeOfBirth(IDNumber)
 
 # split image
 def crop(dim1,dim2,dim3,dim4,name,img_binary,text_all):
