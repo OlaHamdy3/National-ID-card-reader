@@ -5,7 +5,7 @@ import numpy as np
 pic =np.zeros((300,225))
 name,add,IDNumber,BDate = '','','',''
 job,job2,gender,religion,a3zb,husband = '','','','','',''
-
+#Reading the front side of the ID card
 def front_read(front_src):
 	
 	im_gray = cv2.imread(front_src, cv2.IMREAD_GRAYSCALE)
@@ -17,17 +17,18 @@ def front_read(front_src):
 	global add
 	global IDNumber
 	global BDate
+	# split the img
 	pic = im_gray[50:350,50:275]
 	Name = im_bw[150:310, 400:1000]
 	address = im_bw[300:450, 400:1000]
 	ID = im_bw[500:560,400:1000]
-
+	# Reading the splitted images
 	name=image_to_string(Name,lang="ara")
 	add=image_to_string(address,lang="ara")
 	IDNumber=image_to_string(ID,lang="eng")
 	IDNumber= ''.join(IDNumber.split())
 	
-
+	#Calculate the birth date
 	if IDNumber[0]=='2': 
 		year = '19' + IDNumber[1:3]
 	else:
@@ -37,7 +38,7 @@ def front_read(front_src):
 	BDate = year + '/' + month + '/'+ day
 
 
-
+# split image
 def crop(dim1,dim2,dim3,dim4,name,img_binary,text_all):
 	area=(dim1,dim2,dim3,dim4)
 	cropped_img=img_binary.crop(area)
@@ -74,7 +75,7 @@ def crop(dim1,dim2,dim3,dim4,name,img_binary,text_all):
 	return text
 
 
-
+# Reading the data from the back side of the ID card
 def back_read(source_image):
 	
 	img=Image.open(source_image) #1005 630
@@ -88,7 +89,7 @@ def back_read(source_image):
 	global job,job2,gender,religion,a3zb,husband
 
 	job = crop(230,70,820,140,'job',img_binary,text_all)
-
+	# job2 represents the place of work
 	job2 = crop(230,125,820,190,'job2',img_binary,text_all)
 
 	gender = crop(700,180,820,260,'gender',img_binary,text_all)
@@ -96,7 +97,7 @@ def back_read(source_image):
 	religion = crop(480,180,760,260,'religion',img_binary,text_all)
 
 	a3zb = crop(200,180,570,260,'a3zb',img_binary,text_all)
-
+	# husband name in case of women
 	husband = crop(200,225,820,290,'husband',img_binary,text_all)
 
 	
