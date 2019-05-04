@@ -10,7 +10,7 @@ def front_read(front_src):
 	
 	im_gray = cv2.imread(front_src, cv2.IMREAD_GRAYSCALE)
 	im_bw = im_gray
-	thresh = 90
+	thresh = 95
 	im_bw = cv2.threshold(im_bw, thresh, 255, cv2.THRESH_BINARY)[1]
 	global pic
 	global name
@@ -43,9 +43,11 @@ def crop(dim1,dim2,dim3,dim4,name,img_binary,text_all):
 	cropped_img=img_binary.crop(area)
 	text=image_to_string(cropped_img,lang='ara')
 	if name=='religion':
+		
 		if 'مسلم' in text_all:
 			text='مسلم'
 		elif 'مسيحي' in text_all:
+			
 			text='مسيحي'
 		elif 'مسلمة' in text_all:
 			text='مسلمة'
@@ -82,7 +84,7 @@ def back_read(source_image):
 	cv2.imwrite('threshold.jpg',thresh_img)
 	img_binary=Image.open('threshold.jpg')
 	text_all=image_to_string(img_binary,lang='ara')
-
+	print(text_all)
 	global job,job2,gender,religion,a3zb,husband
 
 	job = crop(230,70,820,140,'job',img_binary,text_all)
@@ -98,7 +100,3 @@ def back_read(source_image):
 	husband = crop(200,225,820,290,'husband',img_binary,text_all)
 
 	
-
-
-
-
