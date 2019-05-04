@@ -5,6 +5,7 @@ from PyQt5 import QtCore
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
+import form
 #from PyQt5.QtWidgets import QApplication, QMainWindow, QMenu, QVBoxLayout, QSizePolicy, QMessageBox, QWidget, \
    # QPushButton, QCheckBox, QLabel, QLineEdit, QComboBox
 #from PyQt5.QtGui import QIcon
@@ -62,7 +63,8 @@ class MainApp(QMainWindow, FORM_CLASS):
         if front_addr=='' or back_addr=='':
             QMessageBox.about(self, "Couldn't generate", "Image is not inserted!")
         else:
-            print("Fahmy function")
+            form.form(front_addr,back_addr)
+            print("done")
         
    
 
