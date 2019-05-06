@@ -3,6 +3,7 @@ import cv2
 from pytesseract import image_to_string
 import numpy as np
 import pob
+import gender
 pic =np.zeros((300,225))
 name,add,IDNumber,BDate = '','','',''
 job,job2,gender,religion,a3zb,husband,govern = '','','','','','',''
@@ -93,12 +94,13 @@ def back_read(source_image):
 	text_all=image_to_string(img_binary,lang='ara')
 	print(text_all)
 	global job,job2,gender,religion,a3zb,husband
+	global IDNumber
 
 	job = crop(230,70,820,140,'job',img_binary,text_all)
 	# job2 represents the place of work
 	job2 = crop(230,125,820,190,'job2',img_binary,text_all)
-	gender = crop(700,180,820,260,'gender',img_binary,text_all)
-
+	#gender = crop(700,180,820,260,'gender',img_binary,text_all)
+	gender = gender.gen(IDNumber)
 	religion = crop(480,180,760,260,'religion',img_binary,text_all)
 
 	a3zb = crop(200,180,570,260,'a3zb',img_binary,text_all)
