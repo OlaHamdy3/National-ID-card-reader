@@ -24,8 +24,6 @@ def remove_newline(txt):
     return res
 def form(front_path,back_path):
     image = Image.open("empty_form.jpg")
-    ##front_path="front3.png"
-    ##back_path="back1.jpg"
     integrate.front_read(front_path)
     integrate.back_read(back_path)
     name=remove_newline(integrate.name)
@@ -36,7 +34,7 @@ def form(front_path,back_path):
     gender=integrate.gender
     religion=integrate.religion
     social_status=integrate.a3zb
-    husband_name="none"#integrate.husband
+    husband_name=integrate.husband
     job=integrate.job+" "+integrate.job2
 
     font=70

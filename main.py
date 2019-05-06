@@ -7,6 +7,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 import form
 import Scanner
+import cv2
 #from PyQt5.QtWidgets import QApplication, QMainWindow, QMenu, QVBoxLayout, QSizePolicy, QMessageBox, QWidget, \
    # QPushButton, QCheckBox, QLabel, QLineEdit, QComboBox
 #from PyQt5.QtGui import QIcon
@@ -39,8 +40,6 @@ class MainApp(QMainWindow, FORM_CLASS):
         Scanner.scan(front_addr,"front")
         #front_addr = str(front_addr)[2:str(front_addr).find(',')-1]
         pixmap = QPixmap("temp_front.jpg")
-        
-        print(type(pixmap))
         self.label_imgf.setPixmap(pixmap)
         self.label_imgf.setScaledContents(True)
         
@@ -53,7 +52,7 @@ class MainApp(QMainWindow, FORM_CLASS):
         Scanner.scan(back_addr,"back")
         #back_addr = str(back_addr)[2:str(back_addr).find(',')-1]
         pixmap = QPixmap("temp_back.jpg")
-
+        
         self.label_imgb.setPixmap(pixmap)
         self.label_imgb.setScaledContents(True)
 
@@ -67,7 +66,7 @@ class MainApp(QMainWindow, FORM_CLASS):
         if front_addr=='' or back_addr=='':
             QMessageBox.about(self, "Couldn't generate", "Image is not inserted!")
         else:
-            form.form(front_addr,back_addr)
+            form.form("temp_front.jpg","temp_back.jpg")
             print("done")
         
    

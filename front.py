@@ -15,7 +15,8 @@ ID = im_bw[500:560,400:1000]
 
 name=image_to_string(Name,lang="ara")
 add=image_to_string(address,lang="ara")
-IDNumber=image_to_string(ID,lang="eng")
+IDNumber=image_to_string(ID,lang="hin")
+print(IDNumber)
 
 
 IDNumber= ''.join(IDNumber.split())
