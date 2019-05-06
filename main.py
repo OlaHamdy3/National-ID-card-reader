@@ -58,7 +58,7 @@ class MainApp(QMainWindow, FORM_CLASS):
 
         #print(input_file1)
 
-        print ("____",back_addr,"____")
+##        print ("____",back_addr,"____")
 	
   
     def generate(self):

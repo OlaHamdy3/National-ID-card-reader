@@ -3,7 +3,7 @@ import cv2
 from pytesseract import image_to_string
 import numpy as np
 import pob
-import gender
+import gender as gn
 pic =np.zeros((300,225))
 name,add,IDNumber,BDate = '','','',''
 job,job2,gender,religion,a3zb,husband,govern = '','','','','','',''
@@ -48,7 +48,7 @@ def crop(dim1,dim2,dim3,dim4,name,img_binary,text_all):
 	area=(dim1,dim2,dim3,dim4)
 	cropped_img=img_binary.crop(area)
 	text=image_to_string(cropped_img,lang='ara')
-	cropped_img.show()
+##	cropped_img.show()
 	if name=='religion':
 		
 		if 'مسلم' in text_all:
@@ -92,7 +92,6 @@ def back_read(source_image):
 	cv2.imwrite('threshold.jpg',thresh_img)
 	img_binary=Image.open('threshold.jpg')
 	text_all=image_to_string(img_binary,lang='ara')
-	print(text_all)
 	global job,job2,gender,religion,a3zb,husband
 	global IDNumber
 
@@ -100,7 +99,7 @@ def back_read(source_image):
 	# job2 represents the place of work
 	job2 = crop(230,125,820,190,'job2',img_binary,text_all)
 	#gender = crop(700,180,820,260,'gender',img_binary,text_all)
-	gender = gender.gen(IDNumber)
+	gender = gn.gen(IDNumber)
 	religion = crop(480,180,760,260,'religion',img_binary,text_all)
 
 	a3zb = crop(200,180,570,260,'a3zb',img_binary,text_all)

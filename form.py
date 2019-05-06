@@ -34,7 +34,9 @@ def form(front_path,back_path):
     gender=integrate.gender
     religion=integrate.religion
     social_status=integrate.a3zb
-    husband_name=integrate.husband
+    husband_name="لا يوجد"#integrate.husband
+    if(len(integrate.husband)>1):
+        husband_name=integrate.husband
     job=integrate.job+" "+integrate.job2
 
     font=70
