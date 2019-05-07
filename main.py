@@ -8,11 +8,6 @@ from PyQt5.QtGui import *
 import form
 import Scanner
 import cv2
-#from PyQt5.QtWidgets import QApplication, QMainWindow, QMenu, QVBoxLayout, QSizePolicy, QMessageBox, QWidget, \
-   # QPushButton, QCheckBox, QLabel, QLineEdit, QComboBox
-#from PyQt5.QtGui import QIcon
-
-
 
 
 FORM_CLASS, _ = loadUiType(path.join(path.dirname(__file__), "gui.ui"))
@@ -32,7 +27,7 @@ class MainApp(QMainWindow, FORM_CLASS):
         self.back_btn.clicked.connect(self.back)
 
         self.generate_btn.clicked.connect(self.generate)
-
+       
 
     def front(self):
         global front_addr
@@ -43,8 +38,9 @@ class MainApp(QMainWindow, FORM_CLASS):
         self.label_imgf.setPixmap(pixmap)
         self.label_imgf.setScaledContents(True)
         
+##        
         
-        print ("____",front_addr,"____")
+##        print ("____",front_addr,"____")
 
     def back(self):
         global back_addr
@@ -82,5 +78,6 @@ def main():
 
 if __name__ == '__main__':
     main()
+
 
 
