@@ -1,0 +1,14 @@
+pip3 install python-opencv
+pip3 install PyQt5
+pip3 install matplotlib
+pip3 install Pillow==4.3.0
+pip3 install arabic-reshaper
+pip3 install imutils
+pip3 install scikit-image
+pip3 install argparse
+pip3 install python-bidi
+pip3 install pytesseract
+sudo apt-get install tesseract-ocr
+sudo apt-get install tesseract-ocr-ara
+sudo apt-get install tesseract-ocr-hin
+sudo ./makefile
