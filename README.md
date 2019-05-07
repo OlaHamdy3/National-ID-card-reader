@@ -15,21 +15,24 @@ The software accepts photos of national ID cards captured using smart-phones or 
   
   -Note: Make sure you capture a photo in good light conditions.
 # How to run
-1.Install all required libraries in the readme file then run the make file.
+1.Install all required libraries in the readme file then run the make file.   
 '''
-pip3 install python-opencv
-pip3 install PyQt5
-pip3 install matplotlib
-pip3 install Pillow==2.2.2
-pip3 install arabic-reshaper
-pip3 install imutils
-pip3 install scikit-image
-pip3 install argparse
-pip3 install python-bidi
-pip3 install pytesseract
-sudo apt-get install tesseract-ocr
-sudo apt-get install tesseract-ocr-ara
-sudo apt-get install tesseract-ocr-hin
-sudo ./makefile
+pip3 install python-opencv   
+pip3 install PyQt5   
+pip3 install matplotlib   
+pip3 install Pillow=4.3.0   
+pip3 install arabic-reshaper   
+pip3 install imutils   
+pip3 install scikit-image   
+pip3 install argparse   
+pip3 install python-bidi   
+pip3 install pytesseract   
+sudo apt-get install tesseract-ocr   
+sudo apt-get install tesseract-ocr-ara   
+sudo apt-get install tesseract-ocr-hin   
+sudo ./makefile   
 '''
 2.Execute the command "python3 main.py".
+
+# YouTube tutorial
+https://www.youtube.com/watch?v=xUIy5EQ3R6s&t
